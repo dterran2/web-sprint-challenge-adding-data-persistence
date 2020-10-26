@@ -1,8 +1,7 @@
-const { response } = require("express")
 const express = require("express")
-const ingredients = require("../models/resources")
+const resources = require("../models/resources")
 
-const router = expres.Router()
+const router = express.Router()
 
 router.get('/resources', async (req, res, next) => {
     try {

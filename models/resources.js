@@ -1,7 +1,16 @@
-const { leftJoin } = require("../data/config")
+
 const db = require("../data/config")
 
 function find() {
+    return db('resources')
+}
+
+function findById(id) {
     return db('resources as r')
-        .leftJoin('')
+        .where('r.id', id)
+}
+
+module.exports = {
+    find,
+    findById,
 }
