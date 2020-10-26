@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/dterran2/web-sprint-challenge-adding-data-persistence/issues"
   },
-  "homepage": "https://github.com/dterran2/web-sprint-challenge-adding-data-persistence#readme"
+  "homepage": "https://github.com/dterran2/web-sprint-challenge-adding-data-persistence#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.21.6",
+    "sqlite3": "^5.0.0"
+  }
 }
