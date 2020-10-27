@@ -1,11 +1,11 @@
 const express = require("express")
-const resources = require("../models/resources")
+const Resources = require("../models/resources")
 
 const router = express.Router()
 
 router.get('/resources', async (req, res, next) => {
     try {
-        const resources = await resources.find()
+        const resources = await Resources.find()
         res.json(resources)
     }catch(err) {
         next(err)
@@ -14,7 +14,7 @@ router.get('/resources', async (req, res, next) => {
 
 router.get('/resources/:id', async (req, res, next) => {
     try{
-        const resources = await resources.findById(req.params.id)
+        const resources = await Resources.findById(req.params.id)
         if(!resources) {
             return res.status(404).json({
                 message: "Resources not found",
@@ -25,5 +25,17 @@ router.get('/resources/:id', async (req, res, next) => {
         next(err)
     }
 })
+
+router.post("/resources", async (req, res, next) => {
+	try {
+		const [id] = await Resources.find().insert(req.body)
+		const resources = await Resources.find().where({ id }).first()
+
+		res.status(201).json(resources)
+	} catch(err) {
+		next(err)
+	}
+})
+
 
 module.exports = router
